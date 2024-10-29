@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
-u
+
 
 public class ClubRole
 {
     private string name;
     private string role;
     private string contactInfo;
-    public string Name { get { return name; } set { name = value; }}
+    public string Name { get { return name; } set { name = value; } }
     public string Role { get { return role; } set { role = value; } }
     public string ContactInfo { get { return contactInfo; } set { contactInfo = value; } }
 }
-public class StudentClub 
+public class StudentClub
 {
     private double budget;
     public double Budget { get { return budget; } set { budget = value; } }
@@ -24,8 +24,8 @@ public class StudentClub
     private ClubRole financeSecretary;
 
     List<Society> society = new List<Society>();
-    List<FundedSociety> fundingList= new List<FundedSociety>();
-    FundedSociety tempFund=new FundedSociety();
+    List<FundedSociety> fundingList = new List<FundedSociety>();
+    FundedSociety tempFund = new FundedSociety();
     Society tempS = new Society();
 
 
@@ -33,7 +33,7 @@ public class StudentClub
     {
 
         Console.Write("Enter the name of new society : ");
-        tempS.Name=Console.ReadLine();
+        tempS.Name = Console.ReadLine();
         society.Add(tempS);
     }
 
@@ -41,62 +41,64 @@ public class StudentClub
     {
 
         Console.Write("Enter the name of society : ");
-        tempFund.Name=Console.ReadLine();
+        tempFund.Name = Console.ReadLine();
         Console.WriteLine("Proceed with caution.");
         Console.WriteLine("Fund will be calculated on the bases of how many members has joined this society.");
         Console.WriteLine("Rs/500 per member.");
         Console.Write("Enter the number of members joined in this society :");
-        int input=int.Parse(Console.ReadLine());
+        int input = int.Parse(Console.ReadLine());
 
-        tempFund.FundingAmount= input * 500;
+        tempFund.FundingAmount = input * 500;
         fundingList.Add(tempFund);
 
 
     }
     public void dispenseFunds()
     {
-        foreach(var a in fundingList)
+        foreach (var a in fundingList)
         {
             Console.Write($"Society under name {a.Name} funds are {a.FundingAmount}");
         }
 
     }
-    
+
 
 }
 public class Society
 {
     private string name;
     private string contact;
-    public string Name {get { return name; } set { name = value; } }
+    public string Name { get { return name; } set { name = value; } }
     public string Contact { get { return contact; } set { contact = value; } }
 
     List<ClubRole> clubRole = new List<ClubRole>();
     ClubRole tempClubRole = new ClubRole();
-    public void addActivity(){
+    public void addActivity()
+    {
         Console.Write("Name of society : ");
         tempClubRole.Name = Console.ReadLine();
-   
-            Console.Write($"Name of activity:");
-            tempClubRole.Role= Console.ReadLine();
-            Console.Write("Enter contact information:");
-            tempClubRole.ContactInfo = Console.ReadLine();
-            clubRole.Add(tempClubRole);
-    
+
+        Console.Write($"Name of activity:");
+        tempClubRole.Role = Console.ReadLine();
+        Console.Write("Enter contact information:");
+        tempClubRole.ContactInfo = Console.ReadLine();
+        clubRole.Add(tempClubRole);
+
     }
     public void listEvents()
     {
         Console.WriteLine("Listed Events are this ");
-        foreach( var a in clubRole)
+        foreach (var a in clubRole)
         {
             Console.WriteLine($"{a.Name:10} {a.Role:10} {a.ContactInfo:10}");
         }
     }
- 
+
 
 }
 
-public class FundedSociety :Society{
+public class FundedSociety : Society
+{
     private double fundingAmount;
     public double FundingAmount { get { return fundingAmount; } set { fundingAmount = value; } }
 
@@ -104,7 +106,7 @@ public class FundedSociety :Society{
     public string Name { get { return name; } set { name = value; } }
 
 }
-public class NonFundedSociety : Society 
+public class NonFundedSociety : Society
 {
 }
 
@@ -112,7 +114,7 @@ public class User
 {
     public static void Main()
     {
-        int a=0;
+        int a = 0;
         StudentClub obj = new StudentClub();
         Society society = new Society();
         do
@@ -141,7 +143,8 @@ public class User
                 obj.dispenseFunds();
 
             }
-            else if (a == 4) {
+            else if (a == 4)
+            {
                 society.listEvents();
 
             }
@@ -149,6 +152,6 @@ public class User
             {
                 society.listEvents();
             }
-        } while (a!=6);
+        } while (a != 6);
     }
 }
