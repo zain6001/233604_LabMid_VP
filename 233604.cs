@@ -137,15 +137,16 @@ public class User
             {
 
                 obj.fundedSociety();
+            
             }
             else if (a == 3)
             {
-                obj.dispenseFunds();
+                society.addActivity();
 
             }
             else if (a == 4)
             {
-                society.listEvents();
+                obj.dispenseFunds();
 
             }
             else if (a == 5)
